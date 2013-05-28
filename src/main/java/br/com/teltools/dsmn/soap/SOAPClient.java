@@ -49,7 +49,7 @@ public class SOAPClient {
 	 *            Request to be sent
 	 * @return SOAPResponse object (simple wrapper for the response)
 	 * 
-	 * @throws SOAPRequestException
+	 * @throws Exception
 	 *             If there is any connection problem; Timeout or Connection
 	 *             Refused for example (Note that if there IS a response it does
 	 *             NOT throw any exception, an 'internal server error' for
@@ -104,7 +104,7 @@ public class SOAPClient {
 	 *            Stream with the response
 	 * @return String with the indented response
 	 * 
-	 * @throws SOAPRequestException
+	 * @throws Exception
 	 *             if there is any exception while parsing or if there is an IO
 	 *             Exception reading the stream
 	 */
@@ -129,7 +129,20 @@ public class SOAPClient {
 			throw new Exception("Error formatting response", e);
 		}
 	}
-
+	
+	
+	/**
+	 * Helper method that puts the response inside a map (for a possible
+	 * assertion of its keys/value)
+	 * 
+	 * @param stream
+	 *            Stream with the response
+	 * @return Map<String,Object> with the response
+	 * 
+	 * @throws Exception
+	 *             if there is any exception while parsing or if there is an IO
+	 *             Exception reading the stream
+	 */
 	public static Map<String, Object> formatResponseAsMap(InputStream stream) throws Exception {
 		Map<String, Object> mapResponse = new LinkedHashMap<String, Object>();
 		try {

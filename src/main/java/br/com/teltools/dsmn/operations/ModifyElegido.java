@@ -1,0 +1,26 @@
+package br.com.teltools.dsmn.operations;
+
+import br.com.teltools.dsmn.olmsettings.OlmOperation;
+import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
+
+public class ModifyElegido extends SingleRequest{
+	private static String productName = 		"Elegido500";
+	private static String MSISDN = 				"574545646456";
+	private static String charged = 			"no";
+	private static String externalData = 		"teltools";
+	private static String originatingNodeInfo = "WS";
+	private static String FaFIdList = 			productName.substring(productName.length()-3);
+	private static String MSISDNElegidoToRegister = "573467676767";
+	
+	public ModifyElegido(){
+		super(OlmOperation.modifyElegido, productName );
+		
+		this.setRequestAttr(OlmRequestFields.MSISDN, MSISDN);
+		this.setRequestAttr(OlmRequestFields.charged, charged);
+		this.setRequestAttr(OlmRequestFields.externalData, externalData);
+		this.setRequestAttr(OlmRequestFields.originatingNodeInfo, originatingNodeInfo);
+		this.setRequestAttr(OlmRequestFields.FaFIdList, FaFIdList);
+		this.setRequestAttr(OlmRequestFields.MSISDNElegidoToRegister, MSISDNElegidoToRegister);
+	}
+		
+}

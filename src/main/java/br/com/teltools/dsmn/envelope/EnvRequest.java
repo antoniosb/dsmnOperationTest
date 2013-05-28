@@ -3,6 +3,8 @@ package br.com.teltools.dsmn.envelope;
 import java.util.LinkedList;
 import java.util.List;
 
+import br.com.teltools.dsmn.olmsettings.OlmOperation;
+
 
 /** 
  * Structured representation the <strong>Request Element</strong> of an DSMN SOAP Envelop
