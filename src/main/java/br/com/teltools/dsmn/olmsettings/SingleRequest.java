@@ -1,4 +1,4 @@
-package br.com.teltools.dsmn.request;
+package br.com.teltools.dsmn.olmsettings;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,7 +6,6 @@ import java.util.List;
 import br.com.teltools.dsmn.envelope.EnvRequest;
 import br.com.teltools.dsmn.envelope.EnvRoot;
 import br.com.teltools.dsmn.envelope.EnvSubscriber;
-import br.com.teltools.dsmn.envelope.OlmOperation;
 import br.com.teltools.dsmn.soap.SOAPRequest;
 import br.com.teltools.dsmn.soap.SOAPResponse;
 
@@ -38,12 +37,14 @@ public class SingleRequest {
 		this.envRoot.addRequest(envRequest);
 	}
 	
-	
-	public void setRequestAttr(String key, String value, int subscriberIndex){
-		this.envSubscriber.get(subscriberIndex).putVar(key, value);
+	public void setRequestAttr(OlmRequestFields key, String value, int subscriberIndex){
+		this.envSubscriber.get(subscriberIndex).putVar(key.toString(), value);
 	}
-	public void setRequestAttr(String key, String value){
-		this.envSubscriber.get(0).putVar(key, value);
+	public void setRequestAttr(OlmRequestFields key, String value){
+		this.envSubscriber.get(0).putVar(key.toString(), value);
+	}
+	public void setRequestProductName(String productName){
+		this.envRequest.setProductName(productName);
 	}
 
 	
@@ -52,7 +53,7 @@ public class SingleRequest {
 	}
 	
 	public SOAPResponse run() throws Exception{
-		return OlmOperation.getSoap().run(this.getWebRequest());
+		return OlmAddress.getSoap().run(this.getWebRequest());
 	}
 
 	
@@ -60,5 +61,5 @@ public class SingleRequest {
 		 SOAPRequest req = new SOAPRequest(envRoot);
 		 return req.getRequestString();
 	}
-
+	
 }

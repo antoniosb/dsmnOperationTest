@@ -2,6 +2,7 @@ package br.com.teltools.dsmn.operations;
 
 import br.com.teltools.dsmn.olmsettings.OlmOperation;
 import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
+import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class UnregisterElegido extends SingleRequest{
 	private static String productName = 		"Elegido500";
