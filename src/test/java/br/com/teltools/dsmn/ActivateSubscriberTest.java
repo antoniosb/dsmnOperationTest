@@ -6,6 +6,8 @@ import static org.junit.Assert.assertNull;
 
 import java.util.Map;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
@@ -13,6 +15,16 @@ import br.com.teltools.dsmn.operations.ActivateSubscriber;
 
 @SuppressWarnings("unchecked")
 public class ActivateSubscriberTest {
+	
+	@Before
+	public void setUP(){
+		//?
+	}
+	
+	@After
+	public void tearDown(){
+		//?
+	}
 	
 	@Test
 	public void mustReturnSuccess(){

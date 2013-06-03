@@ -6,10 +6,10 @@ import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class ActivateSubscriber extends SingleRequest{
 	
-	private static String MSISDN = "573445665786";
+	private static String MSISDN = OlmOperation.GLOBAL_MSISDN;
 
 	public ActivateSubscriber() {
-		super(OlmOperation.cancelSubscription, null);
+		super(OlmOperation.activateSubscriber, null);
 		this.setRequestAttr(OlmRequestFields.MSISDN, MSISDN);
 	}
 	

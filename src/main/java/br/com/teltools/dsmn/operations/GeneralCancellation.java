@@ -6,11 +6,11 @@ import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class GeneralCancellation extends SingleRequest{
 	
-	private static String MSISDN = "573445665786";
+	private static String MSISDN = OlmOperation.GLOBAL_MSISDN;
 	private static String originatingNodeInfo = "WS";
 	private static String externalData = "teltools";
 	private static String productName = "generalCancellation";
-	private static String mode = "single";
+	private static String mode = "SINGLE";
 	//private static String programmedCancellationDate = "20141213090909-0500";
 
 	public GeneralCancellation() {

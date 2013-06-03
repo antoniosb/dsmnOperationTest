@@ -6,8 +6,8 @@ import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class DeleteElegidos extends SingleRequest{
 	
-	private static String productName = "Elegido100";
-	private static String MSISDN = "573445665786";
+	private static String MSISDN = OlmOperation.GLOBAL_MSISDN;
+	private static String productName = OlmOperation.GLOBAL_PRODUCT_NAME;
 	private static String originatingNodeInfo = "WS";
 	private static String externalData = "teltools";
 	private static String charged = "no";

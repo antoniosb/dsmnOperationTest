@@ -5,7 +5,7 @@ import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
 import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class ChangeSubscriberDetails extends SingleRequest{
-	private static String MSISDN = 				"574545646456";
+	private static String MSISDN = 				OlmOperation.GLOBAL_MSISDN;
 	private static String IMEI = 				"0";
 	private static String ICCID = 				"0";
 	private static String EMAIL = 				"teste@teltools.org";

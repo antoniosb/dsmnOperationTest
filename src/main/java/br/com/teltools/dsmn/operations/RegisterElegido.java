@@ -5,8 +5,8 @@ import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
 import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class RegisterElegido extends SingleRequest{
-	private static String productName = 		"Elegido500";
-	private static String MSISDN = 				"574545646456";
+	private static String MSISDN = 				OlmOperation.GLOBAL_MSISDN;
+	private static String productName = 		OlmOperation.GLOBAL_PRODUCT_NAME;
 	private static String IMEI = 				"0";
 	private static String ICCID = 				"0";
 	private static String EMAIL = 				"teste@teltools.org";
@@ -17,7 +17,7 @@ public class RegisterElegido extends SingleRequest{
 	private static String externalData = 		"teltools";
 	private static String originatingNodeInfo = "WS";
 	private static String FaFIdList = 			productName.substring(productName.length()-3);
-	private static String MSISDNElegidoToRegister = "573467676767";
+	private static String MSISDNElegidoToRegister = "573445665787";
 	
 	public RegisterElegido(){
 		super(OlmOperation.registerElegido, productName );

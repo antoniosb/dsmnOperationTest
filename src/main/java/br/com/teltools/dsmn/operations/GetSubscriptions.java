@@ -6,7 +6,7 @@ import br.com.teltools.dsmn.olmsettings.SingleRequest;
 
 public class GetSubscriptions extends SingleRequest{
 	
-	private static String MSISDN = 					"573445678987";
+	private static String MSISDN = 					OlmOperation.GLOBAL_MSISDN;
 	private static String subscriptionStatus = 		"all";
 	private static String getVolume = 				"no";
 	

@@ -26,4 +26,8 @@ public enum OlmOperation {
 	getSubscriptions,
 	getAllCommercialProducts,
 	enquireElegido;
+	
+	public static final String GLOBAL_MSISDN = "573445665786";
+	public static final String GLOBAL_PRODUCT_NAME = "Elegido100";
 }
+
