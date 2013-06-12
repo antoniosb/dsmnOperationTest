@@ -20,7 +20,7 @@ public class CancelSubscriptionTest {
 	@Before
 	public void setUp() throws Exception{
 		CreateNewSubscription request = new CreateNewSubscription();
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -29,9 +29,12 @@ public class CancelSubscriptionTest {
 	
 	@After
 	public void tearDown() throws Exception{
+		CreateNewSubscription request2 = new CreateNewSubscription();
+		request2.setRequestProductName("Elegido400");
+		request2.run();
 		GeneralCancellation request = new GeneralCancellation();
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -42,7 +45,7 @@ public class CancelSubscriptionTest {
 	public void mustCancelActiveSubscription() throws Exception{
 		CancelSubscription request = new CancelSubscription();
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -55,10 +58,10 @@ public class CancelSubscriptionTest {
 		CancelSubscription request = new CancelSubscription();
 		request.setRequestProductName("Paquete SMS 30");
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertEquals(response.get("status"),"error");
-		assertNull(response.get("errorCode"));
+		assertNotNull(response.get("errorCode"));
 		
 	}
 	

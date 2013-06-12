@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import br.com.teltools.dsmn.operations.CreateNewSubscription;
 import br.com.teltools.dsmn.operations.GeneralCancellation;
+import br.com.teltools.dsmn.operations.ReactivateSubscription;
 import br.com.teltools.dsmn.operations.SuspendSubscription;
 
 @SuppressWarnings("unchecked")
@@ -20,7 +21,7 @@ public class SuspendSubscriptionTest {
 	@Before
 	public void setUp() throws Exception{
 		CreateNewSubscription request = new CreateNewSubscription();
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -29,9 +30,12 @@ public class SuspendSubscriptionTest {
 	
 	@After
 	public void tearDown() throws Exception{
+		ReactivateSubscription request2 = new ReactivateSubscription();
+		request2.run();
+		
 		GeneralCancellation request = new GeneralCancellation();
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -39,32 +43,22 @@ public class SuspendSubscriptionTest {
 	}
 
 	@Test
-	public void mustSuspendWithSuccess(){
-		try {
+	public void mustSuspendWithSuccess() throws Exception{
 			SuspendSubscription request = new SuspendSubscription();
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "ok");
 			assertNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
-	public void mustSuspendWithError(){
-		try {
+	public void mustSuspendWithError() throws Exception{
 			SuspendSubscription request = new SuspendSubscription();
 			request.setRequestProductName("xxx");
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 

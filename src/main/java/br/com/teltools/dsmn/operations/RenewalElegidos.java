@@ -13,7 +13,7 @@ public class RenewalElegidos extends SingleRequest{
 	private static String FaFIdList = 			productName.substring(productName.length()-3);
 	
 	public RenewalElegidos(){
-		super(OlmOperation.renewalElegidos, productName );
+		super(OlmOperation.renewalElegido, productName );
 		
 		this.setRequestAttr(OlmRequestFields.MSISDN, MSISDN);
 		this.setRequestAttr(OlmRequestFields.charged, charged);

@@ -17,7 +17,7 @@ public class RegisterElegido extends SingleRequest{
 	private static String externalData = 		"teltools";
 	private static String originatingNodeInfo = "WS";
 	private static String FaFIdList = 			productName.substring(productName.length()-3);
-	private static String MSISDNElegidoToRegister = "573445665787";
+	private static String MSISDNElegidoToRegister = "574567890004";
 	
 	public RegisterElegido(){
 		super(OlmOperation.registerElegido, productName );

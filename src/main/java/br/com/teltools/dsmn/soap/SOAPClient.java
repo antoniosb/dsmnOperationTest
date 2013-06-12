@@ -190,6 +190,7 @@ public class SOAPClient {
 					mapResponse.put(String.valueOf(mapResult.get("resultID")), mapResult);
 				}
 			}
+			System.out.println(mapResponse.toString());
 		return mapResponse;
 		} catch (Exception e) {
 			throw new Exception("Error formatting response", e);

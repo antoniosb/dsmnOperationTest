@@ -12,47 +12,51 @@ import org.junit.Test;
 
 import br.com.teltools.dsmn.olmsettings.OlmRequestFields;
 import br.com.teltools.dsmn.operations.ActivateSubscriber;
+import br.com.teltools.dsmn.operations.CreateNewSubscription;
+import br.com.teltools.dsmn.operations.GeneralCancellation;
 
 @SuppressWarnings("unchecked")
 public class ActivateSubscriberTest {
 	
 	@Before
-	public void setUP(){
-		//?
+	public void setUp() throws Exception{
+		CreateNewSubscription request = new CreateNewSubscription();
+		request.setRequestAttr(OlmRequestFields.externalData, "install");
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
+		System.out.println(response.toString());
+		assertNotNull(response.get("status"));
+		assertEquals(response.get("status"), "ok");
+		assertNull(response.get("errorCode"));
 	}
 	
 	@After
-	public void tearDown(){
-		//?
+	public void tearDown() throws Exception{
+		GeneralCancellation request = new GeneralCancellation();
+		
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
+		
+		assertNotNull(response.get("status"));
+		assertEquals(response.get("status"), "ok");
+		assertNull(response.get("errorCode"));
 	}
 	
 	@Test
-	public void mustReturnSuccess(){
-		try {
+	public void mustReturnSuccess() throws Exception{
 			ActivateSubscriber request = new ActivateSubscriber();
-			Map<String,Object> response = (Map<String,Object>)request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String,Object>)request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "ok");
 			assertNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
-	public void mustReturnError(){
-		try {
+	public void mustReturnError() throws Exception{
 			ActivateSubscriber request = new ActivateSubscriber();
 			request.setRequestAttr(OlmRequestFields.MSISDN, "");
-			Map<String, Object> response = (Map<String,Object>)request.run().getMapResponse().get(0);
+			Map<String, Object> response = (Map<String,Object>)request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 }

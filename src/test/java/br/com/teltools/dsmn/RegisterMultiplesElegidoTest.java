@@ -21,7 +21,7 @@ public class RegisterMultiplesElegidoTest {
 	@Before
 	public void setUp() throws Exception{
 		CreateNewSubscription request = new CreateNewSubscription();
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -33,7 +33,7 @@ public class RegisterMultiplesElegidoTest {
 		GeneralCancellation request = new GeneralCancellation();
 		request.setRequestAttr(OlmRequestFields.mode, "MULTIPLE");
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -44,7 +44,7 @@ public class RegisterMultiplesElegidoTest {
 	public void mustReturnSuccessDefault() throws Exception{
 		RegisterMultiplesElegido request = new RegisterMultiplesElegido(2);
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"),"ok");
@@ -55,8 +55,8 @@ public class RegisterMultiplesElegidoTest {
 	@Test
 	public void mustReturnErrorDefault() throws Exception{
 		RegisterMultiplesElegido request = new RegisterMultiplesElegido(2);
-		request.setRequestAttr(OlmRequestFields.MSISDN, "573456789999",1);
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		request.setRequestAttr(OlmRequestFields.MSISDN, "",1);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertEquals(response.get("status"), "error");
 		assertNotNull(response.get("errorCode"));

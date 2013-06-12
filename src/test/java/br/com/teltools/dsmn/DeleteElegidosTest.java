@@ -21,7 +21,7 @@ public class DeleteElegidosTest {
 	@Before
 	public void setUp() throws Exception{
 		CreateNewSubscription request = new CreateNewSubscription();
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -32,7 +32,7 @@ public class DeleteElegidosTest {
 	public void tearDown() throws Exception{
 		GeneralCancellation request = new GeneralCancellation();
 		request.setRequestAttr(OlmRequestFields.mode, "MULTIPLE");
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -40,34 +40,24 @@ public class DeleteElegidosTest {
 	}
 
 	@Test
-	public void mustDeleteWithSuccess(){
-		try {
+	public void mustDeleteWithSuccess() throws Exception{
 			DeleteElegidos request = new DeleteElegidos();
 			request.setRequestProductName(null);	
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "ok");
 			assertNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
-	public void mustDeleteWithError(){
-		try {
+	public void mustDeleteWithError() throws Exception{
 			DeleteElegidos request = new DeleteElegidos();
 			request.setRequestAttr(OlmRequestFields.MSISDN, "");
 
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 

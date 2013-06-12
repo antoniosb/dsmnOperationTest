@@ -13,12 +13,12 @@ public enum OlmOperation {
 	generalCancellation,
 	registerElegido,
 	registerMultiplesElegido,
-	registerMultiplesElegidoWithValidity,
+	registerMultipleElegidoWithValidity,
 	unregisterElegido,
 	modifyElegido,
 	modifyMultiplesElegido,
 	deleteElegidos,
-	renewalElegidos,
+	renewalElegido,
 	activateSubscriber,
 	changeMsisdn,
 	changeSubscriberDetails,
@@ -27,7 +27,7 @@ public enum OlmOperation {
 	getAllCommercialProducts,
 	enquireElegido;
 	
-	public static final String GLOBAL_MSISDN = "573445665786";
+	public static final String GLOBAL_MSISDN = "574567890003";
 	public static final String GLOBAL_PRODUCT_NAME = "Elegido100";
 }
 

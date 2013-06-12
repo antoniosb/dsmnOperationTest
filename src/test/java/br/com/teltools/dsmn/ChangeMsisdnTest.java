@@ -23,14 +23,14 @@ public class ChangeMsisdnTest {
 		CreateNewSubscription request1 = new CreateNewSubscription();
 		
 		CreateNewSubscription request2 = new CreateNewSubscription();
-		request2.setRequestAttr(OlmRequestFields.MSISDN, "573445665787");
+		request2.setRequestAttr(OlmRequestFields.MSISDN, "574567890004");
 		
-		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get(0);
+		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get("0");
 		assertNotNull(response1.get("status"));
 		assertEquals(response1.get("status"), "ok");
 		assertNull(response1.get("errorCode"));
 		
-		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get(0);
+		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get("0");
 		assertNotNull(response2.get("status"));
 		assertEquals(response2.get("status"), "ok");
 		assertNull(response2.get("errorCode"));
@@ -40,14 +40,14 @@ public class ChangeMsisdnTest {
 	public void tearDown() throws Exception{
 		GeneralCancellation request1 = new GeneralCancellation();
 		GeneralCancellation request2 = new GeneralCancellation();
-		request2.setRequestAttr(OlmRequestFields.MSISDN, "573445665787");
+		request2.setRequestAttr(OlmRequestFields.MSISDN, "574567890004");
 		
-		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get(0);
+		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get("0");
 		assertNotNull(response1.get("status"));
 		assertEquals(response1.get("status"), "ok");
 		assertNull(response1.get("errorCode"));
 		
-		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get(0);
+		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get("0");
 		assertNotNull(response2.get("status"));
 		assertEquals(response2.get("status"), "ok");
 		assertNull(response2.get("errorCode"));
@@ -55,33 +55,22 @@ public class ChangeMsisdnTest {
 	
 
 	@Test
-	public void mustReturnSuccessDefault() {
-		try {
+	public void mustReturnSuccessDefault() throws Exception {
 			ChangeMsisdn request = new ChangeMsisdn();
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "ok");
 			assertNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
-	public void mustReturnErrorDefault(){
-		try {
+	public void mustReturnErrorDefault() throws Exception{
 			ChangeMsisdn request = new ChangeMsisdn();
 			request.setRequestAttr(OlmRequestFields.MSISDNElegidoToReplace, "");
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 }

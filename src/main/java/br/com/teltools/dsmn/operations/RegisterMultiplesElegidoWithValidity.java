@@ -21,7 +21,7 @@ public class RegisterMultiplesElegidoWithValidity extends SingleRequest{
 	private static String validityDate = 			"20131225120000-0500";
 	
 	public RegisterMultiplesElegidoWithValidity(int numberSubscribers){
-		super(OlmOperation.registerMultiplesElegidoWithValidity, productName, numberSubscribers );
+		super(OlmOperation.registerMultipleElegidoWithValidity, productName, numberSubscribers );
 		
 		for(int i=0; i< numberSubscribers; i++){
 			this.setRequestAttr(OlmRequestFields.MSISDN, MSISDN, i);

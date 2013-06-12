@@ -23,12 +23,12 @@ public class ReactivateSubscriptionTest {
 		CreateNewSubscription request1 = new CreateNewSubscription();
 		SuspendSubscription request2 = new SuspendSubscription();
 		
-		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get(0);
+		Map<String,Object> response1 = (Map<String, Object>) request1.run().getMapResponse().get("0");
 		assertNotNull(response1.get("status"));
 		assertEquals(response1.get("status"), "ok");
 		assertNull(response1.get("errorCode"));
 		
-		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get(0);
+		Map<String,Object> response2 = (Map<String, Object>) request2.run().getMapResponse().get("0");
 		assertNotNull(response2.get("status"));
 		assertEquals(response2.get("status"), "ok");
 		assertNull(response2.get("errorCode"));
@@ -36,9 +36,12 @@ public class ReactivateSubscriptionTest {
 	
 	@After
 	public void tearDown() throws Exception{
+		ReactivateSubscription request2 = new ReactivateSubscription();
+		request2.run();
+		
 		GeneralCancellation request = new GeneralCancellation();
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -46,33 +49,23 @@ public class ReactivateSubscriptionTest {
 	}
 
 	@Test
-	public void mustReactivateWithSuccess(){
-		try {
+	public void mustReactivateWithSuccess() throws Exception{
 			ReactivateSubscription request = new ReactivateSubscription();
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "ok");
 			assertNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
-	public void mustReactivateWithError(){
-		try {
+	public void mustReactivateWithError() throws Exception{
 			ReactivateSubscription request = new ReactivateSubscription();
 			request.setRequestProductName(" ");
 			
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 	
 

@@ -9,7 +9,7 @@ public class ChangeMsisdn extends SingleRequest{
 	private static String charged = 			"no";
 	private static String externalData = 		"teltools";
 	private static String originatingNodeInfo = "WS";
-	private static String MSISDNElegidoToReplace = "573445665787";
+	private static String MSISDNElegidoToReplace = "574567890004";
 	private static String changeType = 				"crossed";
 	
 	public ChangeMsisdn(){
@@ -19,7 +19,7 @@ public class ChangeMsisdn extends SingleRequest{
 		this.setRequestAttr(OlmRequestFields.charged, charged);
 		this.setRequestAttr(OlmRequestFields.externalData, externalData);
 		this.setRequestAttr(OlmRequestFields.originatingNodeInfo, originatingNodeInfo);
-		this.setRequestAttr(OlmRequestFields.MSISDNElegidoToReplace, MSISDNElegidoToReplace);
+		this.setRequestAttr(OlmRequestFields.MSISDNToReplace, MSISDNElegidoToReplace);
 		this.setRequestAttr(OlmRequestFields.changeType, changeType);
 	}
 		

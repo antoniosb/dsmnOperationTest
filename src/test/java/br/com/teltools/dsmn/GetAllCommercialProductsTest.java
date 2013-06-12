@@ -15,7 +15,6 @@ import br.com.teltools.dsmn.operations.GetAllCommercialProducts;
 
 @SuppressWarnings("unchecked")
 public class GetAllCommercialProductsTest {
-	Map<String,Object> response;
 	
 	@Before
 	public void setUp() throws Exception{
@@ -31,33 +30,25 @@ public class GetAllCommercialProductsTest {
 	public void mustRetrieveAllProducts() throws Exception{
 		GetAllCommercialProducts request = new GetAllCommercialProducts();
 
-		response = request.run().getMapResponse();
+		Map<String,Object> response = request.run().getMapResponse();
 		
-		Map<String,Object> result = null;
-		for(int i=0; i< response.size(); i++){
-			result = (Map<String, Object>) response.get(i);
+			Map<String,Object> result = (Map<String, Object>)response.get("0");
 			assertNotNull(result.get("productID"));
 			assertNotNull(result.get("productName"));
 			assertNotNull(result.get("productTime"));
 			assertNotNull(result.get("productStartTimestamp"));
 			assertNotNull(result.get("productEndTimestamp"));
 			assertNotNull(result.get("productProperties"));	
-		}
-		response.clear();
 	}
 	
 	@Test public void mustReturnError() throws Exception{
 		GetAllCommercialProducts request = new GetAllCommercialProducts();
 		request.setRequestAttr(OlmRequestFields.queryType, "");
-		response = request.run().getMapResponse();
-		Map<String,Object> result = null;
-		for(int i=0; i< response.size(); i++){
-			result = (Map<String, Object>) response.get(i);
-			assertNull(result.get("productProperties"));
-			assertNotNull(result.get("errorCode"));
-			assertEquals(result.get("status"),"error");
-		}
-		response.clear();
+		Map<String, Object> response = request.run().getMapResponse();
+		Map<String,Object> result = (Map<String, Object>) response.get("0");
+		assertNull(result.get("productProperties"));
+		assertNotNull(result.get("errorCode"));
+		assertEquals(result.get("status"),"error");
 	}
 	
 //	@Test

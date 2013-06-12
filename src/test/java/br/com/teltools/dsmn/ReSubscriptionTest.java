@@ -28,7 +28,7 @@ public class ReSubscriptionTest {
 //	public void mustReturnSuccessDefault() {
 //		try {
 //			ReSubscription request = new ReSubscription();
-//			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+//			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 //			
 //			assertEquals(response.get("status"), "ok");
 //			assertNull(response.get("errorCode"));
@@ -39,18 +39,12 @@ public class ReSubscriptionTest {
 //	}
 	
 	@Test
-	public void mustReturnErrorDefault(){
-		try {
+	public void mustReturnErrorDefault() throws Exception{
 			ReSubscription request = new ReSubscription();
-			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+			Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 			
 			assertEquals(response.get("status"), "error");
 			assertNotNull(response.get("errorCode"));
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 }

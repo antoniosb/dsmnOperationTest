@@ -21,7 +21,7 @@ public class GetSubscriptionsTest {
 	@Before
 	public void setUp() throws Exception{
 		CreateNewSubscription request = new CreateNewSubscription();
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
@@ -32,7 +32,7 @@ public class GetSubscriptionsTest {
 	public void tearDown() throws Exception{
 		GeneralCancellation request = new GeneralCancellation();
 		
-		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get(0);
+		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
 		
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
