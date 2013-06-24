@@ -23,7 +23,6 @@ public class ActivateSubscriberTest {
 		CreateNewSubscription request = new CreateNewSubscription();
 		request.setRequestAttr(OlmRequestFields.externalData, "install");
 		Map<String,Object> response = (Map<String, Object>) request.run().getMapResponse().get("0");
-		System.out.println(response.toString());
 		assertNotNull(response.get("status"));
 		assertEquals(response.get("status"), "ok");
 		assertNull(response.get("errorCode"));

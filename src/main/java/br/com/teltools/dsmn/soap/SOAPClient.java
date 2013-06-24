@@ -73,17 +73,17 @@ public class SOAPClient {
 			httpConn.setDoOutput(true);
 			httpConn.setDoInput(true);
 
-			logger.info("Sending SOAP Request");
+			//logger.info("Sending SOAP Request");
 			OutputStream out = httpConn.getOutputStream();
 			out.write(b);
 			out.close();
 
 			SOAPResponse response = new SOAPResponse(formatResponseAsMap(httpConn.getInputStream()));
 			
-			logger.info("Success!");
+			//logger.info("Success!");
 			return response;
 		} catch (Exception e) {
-			logger.info(String.format("Fail! \n%s", e));
+			//logger.info(String.format("Fail! \n%s", e));
 			throw new Exception("Erro ao enviar requisicao", e);
 		}
 	}
@@ -190,7 +190,6 @@ public class SOAPClient {
 					mapResponse.put(String.valueOf(mapResult.get("resultID")), mapResult);
 				}
 			}
-			System.out.println(mapResponse.toString());
 		return mapResponse;
 		} catch (Exception e) {
 			throw new Exception("Error formatting response", e);

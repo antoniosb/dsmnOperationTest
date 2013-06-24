@@ -25,7 +25,7 @@ public class SOAPRequest {
 	 * @param envelop Envelop for the request
 	 */
 	public SOAPRequest(Envelop envelop) {
-		logger.info("Creating SOAP Request");
+		//logger.info("Creating SOAP Request");
 		this.envelop = envelop.getEnvelop();
 	}
 
@@ -35,7 +35,7 @@ public class SOAPRequest {
 	 * @return String representing this request
 	 */
 	public String getRequestString() {
-		logger.info("Generating SOAP Request Data");
+		//logger.info("Generating SOAP Request Data");
 		StringBuilder sb = new StringBuilder();
 		sb.append("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webapps.online.ericsson.com\">");
 		sb.append("<soapenv:Header/>");
@@ -48,7 +48,7 @@ public class SOAPRequest {
 			sb.append("<web:operation>").append(request.getOperation()).append("</web:operation>");
 			sb.append("<web:productName>").append(request.getProductName()).append("</web:productName>");
 
-			logger.info("Adding subscribers...");
+			//logger.info("Adding subscribers...");
 			for (int j = 0; j < request.getSubscribers().size(); j++) {
 				EnvSubscriber subscriber = request.getSubscriber(j);
 				sb.append("<web:subscriber>");
